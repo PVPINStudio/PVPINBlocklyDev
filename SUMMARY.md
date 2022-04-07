@@ -7,3 +7,4 @@
 * [配置 第四](pei-zhi-di-si.md)
 * [积木外观开发上 第五](ji-mu-wai-guan-kai-fa-shang-di-wu.md)
 * [积木外观开发下 第六](ji-mu-wai-guan-kai-fa-xia-di-liu.md)
+* [积木代码生成器开发 第七](ji-mu-dai-ma-sheng-cheng-qi-kai-fa-di-qi.md)
