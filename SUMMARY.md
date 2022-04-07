@@ -9,3 +9,4 @@
 * [积木外观开发下 第六](ji-mu-wai-guan-kai-fa-xia-di-liu.md)
 * [积木代码生成器开发 第七](ji-mu-dai-ma-sheng-cheng-qi-kai-fa-di-qi.md)
 * [ToolBox 编写与序列化 第八](toolbox-bian-xie-yu-xu-lie-hua-di-ba.md)
+* [积木开发进阶 第九](ji-mu-kai-fa-jin-jie-di-jiu.md)
