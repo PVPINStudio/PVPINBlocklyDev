@@ -8,11 +8,11 @@ description: 积木开发进阶 第九
 
 右文八章中的所有代码，足以完成一个 `Blockly` 代码编辑器的雏形。但如果仅用这样的代码实现积木，可能最后就会有这样的项目：
 
-![bad](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/9-1.png?lastModify=1649342418)
+![Bad Example](.gitbook/assets/9-1.png)
 
 诚然，这些积木确实能正常工作，但是比之这块积木则相形见绌。
 
-![set](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/9-2.png?lastModify=1649342418)![set](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/9-3.png?lastModify=1649342418)
+![Setter](.gitbook/assets/9-2.png)![Getter](.gitbook/assets/9-3.png)
 
 这一块积木，可以在 `Statement` 和 `Reporter` 之间变形。并且集 `X Y Z` 于一身。它是通过恰当的 `Mutator` 实现的。实现这样的积木有很多种办法，原生实现是 `lists_getIndex` 积木，在 `StackOverFlow` 等平台也有许多人发表过自己的实现。此处余提供一种实现。源码位于示例项目 `location_propmod` 积木中。
 

@@ -16,7 +16,7 @@ description: 积木代码生成器开发 第七
 
 这个预设的 `Generator` 很有用。
 
-![Generator](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/6-1.png?lastModify=1649342194)
+![Generator](.gitbook/assets/7-1.png)
 
 如图的红框就是预设的 `Generator` 。
 
@@ -24,19 +24,19 @@ description: 积木代码生成器开发 第七
 
 首先，输入值有两种。
 
-![Value](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/6-2.png?lastModify=1649342194)
+![Value](.gitbook/assets/7-2.png)
 
-![Field](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/6-3.png?lastModify=1649342194)
+![Field](.gitbook/assets/7-3.png)
 
 第一张图是一个 `Value Input` 。第二张图是一个 `Field Input`。
 
 其区别在于，第一张图的输入可以是一串有返回值的方法，而第二张图必须由用户在浏览器内打字输入。
 
-![Multi Inputs](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/6-4.png?lastModify=1649342194)
+![Multi Inputs](.gitbook/assets/7-4.png)
 
 事实上，一个积木可以有很多个输入。为了区别这些输入，每一个输入都要有一个 `Name` 作为标记。通过 `Name` 可以访问这个输入的值。
 
-![Default](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/6-5.png?lastModify=1649342194)
+![Default](.gitbook/assets/7-5.png)
 
 这个输入的值，已经写在了预设代码里。照抄即可。
 

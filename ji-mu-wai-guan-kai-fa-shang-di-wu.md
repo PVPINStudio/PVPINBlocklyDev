@@ -8,7 +8,7 @@ description: 积木外观开发上 第五
 
 ### Work Space 的结构
 
-![WorkSpace](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-1.png?lastModify=1649341862)
+![WorkSpace](.gitbook/assets/5-1.png)
 
 以上是一个完整的 `WorkSpace` 。左侧包含了 逻辑、循环 等积木类别的竖栏称为 `ToolBox` 。点击 `ToolBox` 之后在右侧显示的，供用户选取积木的部分称为 `FlyOut` 。右侧搭建积木的空白区域和左侧 `ToolBox` 、`FlyOut` 共同组成 `WorkSpace` 。
 
@@ -24,23 +24,23 @@ description: 积木外观开发上 第五
 
 你可以在 `Block Factory` 中自由搭建积木外观，通过搭积木的方式你可以轻松搞定基础积木开发语法。
 
-![Stmt](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-2.png?lastModify=1649341862)![Stmt](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-3.png?lastModify=1649341862)
+![Stmt](.gitbook/assets/5-2.png)![Stmt](.gitbook/assets/5-3.png)
 
 上方的方块被称为 `Reporter Block` ，特点是输出一个返回值。这一说法出自 `MicroSoft PXT` 文档。`Blockly` 本身并没有这一名词，一般直接称该积木拥有 `Output` 。
 
-![Reporter](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-4.png?lastModify=1649341862)![Reporter](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-5.png?lastModify=1649341862)
+![Reporter](.gitbook/assets/5-4.png)![Reporter](.gitbook/assets/5-5.png)
 
 上方的方块被称为 `Statement Block` ，特点是没有返回值，可以看作是 `void` 函数，没有输出。
 
-![inline](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-6.png?lastModify=1649341862)![inline](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-7.png?lastModify=1649341862)
+![inline](.gitbook/assets/5-6.png?lastModify=1649341862)![inline](.gitbook/assets/5-7.png)
 
-![External](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-8.png?lastModify=1649341862)![External](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-9.png?lastModify=1649341862)
+![External](.gitbook/assets/5-8.png)![External](.gitbook/assets/5-9.png)
 
 `Inputs` 规定输入是内联还是外联，单行尽可能内联，多行可以外联。
 
 具体效果见上，`external` 为外联（第一个），`inline` 为内联（第二个）。
 
-![Top\&Bottom](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-10.png?lastModify=1649341862)![Top](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-11.png?lastModify=1649341862)
+![Top\&Bottom](.gitbook/assets/5-10.png)![Top](.gitbook/assets/5-11.png)
 
 连接形式，如为 `Reporter`，请使用 `left output` 。
 
@@ -50,11 +50,11 @@ description: 积木外观开发上 第五
 
 其实上下方连接都可以指定连接类型，不过默认不使用。
 
-![ToolTip](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-12.png?lastModify=1649341862)
+![ToolTip](.gitbook/assets/5-12.png)
 
 `tooltip` 规定鼠标悬停时的描述，可以对功能进行中文翻译。
 
-![HelpURL](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-13.png?lastModify=1649341862)
+![HelpURL](.gitbook/assets/5-13.png)
 
 `help url` 规定跳转的网站。（右键积木，点击 `Help` 后跳转）
 
@@ -62,11 +62,11 @@ description: 积木外观开发上 第五
 
 之后，你可以从左侧 `input` 处选取输入。
 
-![InputValue](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-14.png?lastModify=1649341862)
+![InputValue](.gitbook/assets/5-14.png)
 
-![InputStmt](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-15.png?lastModify=1649341862)
+![InputStmt](.gitbook/assets/5-15.png)
 
-![InputDummy](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-16.png?lastModify=1649341862)
+![InputDummy](.gitbook/assets/5-16.png)
 
 上面展示的就是三种 `Input` 形式。
 
@@ -76,7 +76,7 @@ description: 积木外观开发上 第五
 
 `Dummy Input` 相当于没有任何输入，仅仅只是可以用来加 `Field` 或者文字。
 
-![Dropdown](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-17.png?lastModify=1649341862)
+![Dropdown](.gitbook/assets/5-17.png)
 
 以上是一个 `Dropdown Field`，可以看作是一个返回值对用户无意义的枚举。（用户只关心下拉后的功能，下拉的结果没有意义）。
 
@@ -84,7 +84,7 @@ description: 积木外观开发上 第五
 
 以 `Text Input` 为例，它仅仅接受用户直接将字符串输入一个框中，但是如果字符串是一个变量，或字符串是由 `Reporter` 积木所返回的，就无法嵌入这个框当中，如下所示。同理，少用直接的数字输入。但是可以使用 `CheckBox` 和颜色输入（ `RGB` ）。
 
-![Text Input](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-18.png?lastModify=1649341862)
+![Text Input](.gitbook/assets/5-18.png)
 
 ### 积木导出
 
@@ -94,7 +94,7 @@ description: 积木外观开发上 第五
 
 第二步，把 `Block Definitions` 和 `Generator` 全部切换为 `JavaScript` 。
 
-![Exporter](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/5-19.png?lastModify=1649341862)
+![Exporter](.gitbook/assets/5-19.png)
 
 第三步，把 `Block Definitions` 和 `Generator` 的全部内容都黏贴进某个 `.js` 文件中。
 

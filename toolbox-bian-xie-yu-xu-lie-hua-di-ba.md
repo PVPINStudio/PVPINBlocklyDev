@@ -20,7 +20,7 @@ description: ToolBox 编写与序列化 第八
 
 右文介绍了 `WorkSpace` 功能，用来编辑 `WorkSpace` 的属性（如背景网格样式等）。这些配置项会被导出为一个 `.js` 文件。而 `Developer Tools` 还附带了一个编辑 `ToolBox` 的功能。左侧是搭建区，右侧是预览区。在左侧随意放置一个积木，就可以将它加入默认分类里。
 
-![left](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/8-1.png?lastModify=1649342336)
+![Left](.gitbook/assets/8-1.png)
 
 积木来源，可以是在左侧加载 `.xml` 形式导出的积木外观，也可以是自定义的 `.js` 文件。在左侧加载的 `Library` 同时仅能存在一个，因此使用较为不便。而加载自定义 `.js` 文件时，该文件必须仅包含对外观的定义，不能包含代码生成器，否则无法加载。
 
@@ -28,9 +28,9 @@ description: ToolBox 编写与序列化 第八
 
 可以在左侧区域拖拽组合积木，以便为 `Input` 赋初值。`Field` 同理。
 
-![left](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/8-2.png?lastModify=1649342336)
+![left](.gitbook/assets/8-2.png)
 
-![left](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/8-3.png?lastModify=1649342336)
+![left](.gitbook/assets/8-3.png)
 
 ```
   <block type="server_broadcastmessage">    <value name="TEXT">      <block type="text">        <field name="TEXT"></field>      </block>    </value>  </block>
@@ -40,7 +40,7 @@ description: ToolBox 编写与序列化 第八
 
 将 `<block>` 改为 `<shadow>` 即可实现阴影效果。如图
 
-![left](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/8-4.png?lastModify=1649342336)
+![left](.gitbook/assets/8-4.png)
 
 ```
   <block type="server_broadcastmessage">    <value name="TEXT">      <shadow type="text">        <field name="TEXT"></field>      </shadow>    </value>  </block>
