@@ -40,10 +40,10 @@ move: {    scrollbars: {        horizontal: true,        vertical: true    },   
 
 首先打开 `Blockly Developer Tools`，之后按图示方法操作：
 
-![Blockly Developer Tools](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/4-1.png?lastModify=1649341601)
+![Blockly Developer Tools](.gitbook/assets/4-1.png)
 
 中间一列可供勾选的选项，就是右文翻译的那些配置项。只要点击启用禁用，调整网格、拖拽等配置项的参数，就可以即时地在右侧的预览中看到效果。根本不需要完全在字面上理解配置项的含义。
 
-![Export](file:///C:/Users/williamshi/Documents/Code/PVPIN/Tutorial/PVPINBlocklyDev/img/4-2.png?lastModify=1649341601)
+![Export](.gitbook/assets/4-2.png)
 
 此后单击 `Export`，单击 `Starter Code`，就导出了 `WorkSpace` 的配置项。可以看到，在这个文件中，配置项已经生成好了。
