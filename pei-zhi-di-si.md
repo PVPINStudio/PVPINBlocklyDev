@@ -9,7 +9,12 @@ description: 配置 第四
 ### 网格
 
 ```
-grid: {    spacing: 20,    length: 3,    colour: '#ccc',    snap: true}
+grid: {
+    spacing: 20,
+    length: 3,
+    colour: '#ccc',
+    snap: true
+}
 ```
 
 依次代表格点间距，十字形格点的长短，格点颜色，以及是否自动将积木与网格对齐。
@@ -17,7 +22,14 @@ grid: {    spacing: 20,    length: 3,    colour: '#ccc',    snap: true}
 ### 拖拽
 
 ```
-move: {    scrollbars: {        horizontal: true,        vertical: true    },    drag: true,    wheel: false}
+move: {
+    scrollbars:{
+        horizontal: true,
+        vertical: true    
+    },
+    drag: true,
+    wheel: false
+}
 ```
 
 `scrollbars` 配置滚动。当传入的对象中键 `horizontal` 值为 `true` 时则显示水平滚动条。反之则禁止水平滚动条。`vertical` 对应垂直滚动条。
@@ -31,7 +43,15 @@ move: {    scrollbars: {        horizontal: true,        vertical: true    },   
 ### 缩放
 
 ```
- zoom: {     controls: true,     wheel: true,     startScale: 1.0,     maxScale: 3,     minScale: 0.3,     scaleSpeed: 1.2,     pinch: true }
+ zoom: {
+    controls: true,
+    wheel: true,
+    startScale: 1.0,
+    maxScale: 3,
+    minScale: 0.3,
+    scaleSpeed: 1.2,
+    pinch: true
+}
 ```
 
 依次为右下角是否显示缩放图标，是否允许滚轮缩放，起始大小比例，允许缩放的最大、最小大小比例，缩放速率，和移动设备是否允许二指缩放。

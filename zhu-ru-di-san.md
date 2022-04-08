@@ -19,7 +19,11 @@ const workspace = Blockly.inject(location, options);
 但是 `WorkSpace` 不仅仅是这样的。`ToolBox` 可以不存在。这样就形成了一个展示区域。`Toolbox` 可以显示在右边，以方便从右至左书写的语言。甚至可以显示在上方。同一个页面内可以有多个 `WorkSpace` 。推荐使用 `WorkSpace` 来给积木写文档。每一个积木都使用 `WorkSpace` 展示，而不是截图展示。
 
 ```
-const options = {        toolbox: document.getElementById('toolbox'),        media: 'media/'    };const workspace = Blockly.inject('blocklyDiv', options);
+const options = {
+    toolbox: document.getElementById('toolbox'),
+    media: 'media/'    
+};
+const workspace = Blockly.inject('blocklyDiv', options);
 ```
 
 这就是注入的一个简单实例。配置项有很多，将在下方一一翻译。最简单的方式（即本教程示例项目采用的方式）是在 `HTML` 页面中写一个 `<xml>` 标签作为 `ToolBox` ，再把 `Blockly` 注入到一个 `<div>` 当中。`ToolBox` 的编写将会在左文提及。此处提供一个简单的 `ToolBox` 供测试使用。
@@ -54,4 +58,4 @@ const options = {        toolbox: document.getElementById('toolbox'),        med
 | `plugins`             | `object`                  | 配置插件。见左文。                                                                                                                      |
 | `zoom`                | `object`                  | 配置缩放功能。见左文。                                                                                                                    |
 
-\
+\\

@@ -40,7 +40,7 @@ description: 积木代码生成器开发 第七
 
 这个输入的值，已经写在了预设代码里。照抄即可。
 
-事实上，预设代码会生成所有获取 `Field Input`、`Value Input`、`DropDown` 的值的代码。只需要调用这些变量。最终拼接为一个字符串即可。`Statement` 积木需要在末尾加上  。
+事实上，预设代码会生成所有获取 `Field Input`、`Value Input`、`DropDown` 的值的代码。只需要调用这些变量。最终拼接为一个字符串即可。`Statement` 积木需要在末尾加上 。
 
 ### 正确使用自定义函数
 
@@ -51,7 +51,15 @@ description: 积木代码生成器开发 第七
 比如要使用 `Java` 中的 `INetSocketAddress` 类型的对象获取 `IP` 字符串，就可以这么写：
 
 ```
-var functionName = Blockly.JavaScript.provideFunction_("iNetSocketAddress_toString", [    "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(iNetSocketAddress) {",    "  var hostStr = iNetSocketAddress.getHostString();",    "  var portStr = iNetSocketAddress.getPort();",    "  var ret = hostStr + ':' + portStr;",    "  return ret;",    "}",]);code = functionName + "(" + ... + ")";
+var functionName = Blockly.JavaScript.provideFunction_("iNetSocketAddress_toString", [
+    "function " + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ + "(iNetSocketAddress) {",
+    "  var hostStr = iNetSocketAddress.getHostString();",
+    "  var portStr = iNetSocketAddress.getPort();",
+    "  var ret = hostStr + ':' + portStr;",
+    "  return ret;",
+    "}",
+]);
+code = functionName + "(" + ... + ")";
 ```
 
 另外一个好处在于，同一个 `INetSocketAddress` 类型的对象可以多次复用。假设这个对象是调用某个耗时方法得到的（即省略号位置处是一个对函数的调用），那么缓存参数可以提高效率。假设这个对象和随机有关，如生成随机长度列表，那么不缓存会造成错误。

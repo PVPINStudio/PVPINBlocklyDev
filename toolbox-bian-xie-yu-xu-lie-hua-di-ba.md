@@ -11,7 +11,10 @@ description: ToolBox 编写与序列化 第八
 一个非动态分类例子：
 
 ```
-<category name="分类名字" colour="#525288">    <block type="hello_world">    </block></category>
+<category name="分类名字" colour="#525288">
+    <block type="hello_world">
+    </block>
+</category>
 ```
 
 如果积木比较复杂，则需要给 `mutation` 、`field` 等赋初值。否则可能会在 `FlyOut` 内出现不合法状态以及显示问题。
@@ -43,7 +46,13 @@ description: ToolBox 编写与序列化 第八
 ![left](.gitbook/assets/8-4.png)
 
 ```
-  <block type="server_broadcastmessage">    <value name="TEXT">      <shadow type="text">        <field name="TEXT"></field>      </shadow>    </value>  </block>
+    <block type="server_broadcastmessage">
+    <value name="TEXT">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+  </block>
 ```
 
 ### 摆脱 Blockly Developer Tools
@@ -51,7 +60,11 @@ description: ToolBox 编写与序列化 第八
 如果积木的代码生成器和外观在同一个文件内，则不便使用 `Blockly Developer Tools` 。此时可以使用另外的办法。右文提及，`ToolBox` 的格式实际上与积木序列化后的格式一致，只是去掉了 `id` 和坐标信息。那么，可以首先编写一个分类，并简单地加上积木，比如：
 
 ```
-<category name="someCategory">    <block type="a"></block>    <block type="b"></block>    <block type="c"></block></category>
+<category name="someCategory">
+    <block type="a"></block>
+    <block type="b"></block>
+    <block type="c"></block>
+</category>
 ```
 
 然后将这些积木一块一块拖入 `WorkSpace` 中，配好默认值，自动生成了 `mutation`，最后将序列化后的 `XML` 去掉 `id` 等信息，即为 `ToolBox`。
@@ -65,7 +78,9 @@ Blockly.Xml.workspaceToDom(workspace);
 反序列化的代码如下所示：
 
 ```
-      var xml_text = '<xml xmlns="https://developers.google.com/blockly/xml"><block type="procedures_defnoreturn" id="g:FJeZ#!Yc3xz/KNU8ZO" x="40" y="30"><field name="NAME">main</field><comment pinned="false" h="80" w="160">function main...</comment></block></xml>';      var xml = Blockly.Xml.textToDom(xml_text);      Blockly.Xml.domToWorkspace(xml, workspace);
+      var xml_text = '<xml xmlns="https://developers.google.com/blockly/xml"><block type="procedures_defnoreturn" id="g:FJeZ#!Yc3xz/KNU8ZO" x="40" y="30"><field name="NAME">main</field><comment pinned="false" h="80" w="160">function main...</comment></block></xml>';
+      var xml = Blockly.Xml.textToDom(xml_text);
+      Blockly.Xml.domToWorkspace(xml, workspace);
 ```
 
 这样就向 `workspace` 内添加了一个函数积木。如果要覆盖当前已有的积木，可以清空 `WorkSpace`：
@@ -79,13 +94,26 @@ Blockly.Xml.workspaceToDom(workspace);
 示例项目采用最简单的办法。在 `index.html` 内加一个 `toolbox` ，然后在注入时指向它。当然也可以直接传入一个字符串作为 `ToolBox`。如：
 
 ```
-{    toolbox: '<xml>...</xml>'}
+{toolbox: '<xml>...</xml>'}
 ```
 
 如果使用 `JSON`，还可以直接传入 `JavaScript` 对象，如以下摘自官方教程的代码：
 
 ```
-var toolbox = {    "kind": "flyoutToolbox",    "contents": [      {        "kind": "block",        "type": "controls_if"      },      {        "kind": "block",        "type": "controls_whileUntil"      }    ]  };var workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
+var toolbox = {
+    "kind": "flyoutToolbox",
+    "contents": [
+      {
+        "kind": "block",
+        "type": "controls_if"
+      },
+      {
+        "kind": "block",
+        "type": "controls_whileUntil"
+      }
+    ]
+  };
+var workspace = Blockly.inject('blocklyDiv', {toolbox: toolbox});
 ```
 
 使用 `JSON` 定义 `ToolBox` 和完成序列化的方法，此处不赘。

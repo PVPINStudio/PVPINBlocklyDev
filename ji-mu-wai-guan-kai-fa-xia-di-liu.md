@@ -27,7 +27,14 @@ description: 积木外观开发下 第六
 所谓 `onchange` 函数，其实是一个事件监听。可以这样写：
 
 ```
-​Blockly.Blocks['hello_world'] = {  init: function () {      //......  }, onchange: function (event) {      }};
+​Blockly.Blocks['hello_world'] = {
+  init: function () {
+  //......  
+  },
+  onchange: function (event) {
+  
+  }
+};
 ```
 
 这个事件监听无法指定类型。即与这个方块相关的任何事件，包括移动、拖拽等，都会传入一个 `event` 并调用该函数。查看官方文档可以看到各个事件的描述以及提供的方法：
@@ -37,7 +44,12 @@ description: 积木外观开发下 第六
 如需要监听拖拽事件，那么就可以这样写：
 
 ```
-onchange: function (event) {    if (!this.workspace.isDragging || this.workspace.isDragging() ||        event.type !== Blockly.Events.BLOCK_MOVE) {            return;    }    //...}
+onchange: function (event) {
+    if (!this.workspace.isDragging || this.workspace.isDragging() || event.type !== Blockly.Events.BLOCK_MOVE) {
+        return;    
+    }    
+    //...
+}
 ```
 
 请注意性能的消耗。很多情况下不需要使用 `onchange` 函数，因为有更好的选择。
@@ -47,7 +59,16 @@ onchange: function (event) {    if (!this.workspace.isDragging || this.workspace
 可以这样写：
 
 ```
-this.appendDummyInput()     .appendField(         new Blockly.FieldDropdown(             [...],             function (value) {                 if (value) {                 }             }         ),         "TYPE");
+this.appendDummyInput()
+     .appendField(
+         new Blockly.FieldDropdown(
+             [...],
+             function (value) {
+                 if (value) {
+                 }
+             }
+         ),
+         "TYPE");
 ```
 
 其中 `value` 是用户输入的新值。这个输入检查函数在每次 `Field` 的值变化时调用。对于 `Text Input` 等其他类型的 `Field` 可以迁移使用。
@@ -61,11 +82,24 @@ this.appendDummyInput()     .appendField(         new Blockly.FieldDropdown(    
 最简单的 `mutator` 如下（摘自官方教程）：
 
 ```
-// These are the old XML serialization hooks for the lists_create_with block.mutationToDom: function() {  // You *must* create a <mutation></mutation> element.  // This element can have children.  var container = Blockly.utils.xml.createElement('mutation');  container.setAttribute('items', this.itemCount_);  return container;},​domToMutation: function(xmlElement) {  this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);  // This is a helper function which adds or removes inputs from the block.  this.updateShape_();},
+// These are the old XML serialization hooks for the lists_create_with block.
+mutationToDom: function() {
+  // You *must* create a <mutation></mutation> element.
+  // This element can have children.
+  var container = Blockly.utils.xml.createElement('mutation');
+  container.setAttribute('items', this.itemCount_);
+  return container;
+},
+
+domToMutation: function(xmlElement) {
+  this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+  // This is a helper function which adds or removes inputs from the block.
+  this.updateShape_();
+},
 ```
 
 此处有个技巧：`domToMutation` 函数中可以直接调用 `setFieldValue` 方法，强制更新积木对象中的属性。这样在 `updateShape_` 方法中就可以直接通过 `this` 访问各种 `Field` 的值而不用担心获取不到。
 
 尽可能通过 `mutator` 把多个积木拼合起来。如设置对象的 `X` 坐标，和获取对象的 `X` 坐标，可以做在同一个积木里。把 `Reporter` 转为 `Statement` 的方式见左文。
 
-\
+\\
