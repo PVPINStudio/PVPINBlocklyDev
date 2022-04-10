@@ -4,29 +4,19 @@ description: 积木外观开发上 第五
 
 # 积木外观开发上 第五
 
-右文提到了如何注入 `WorkSpace` ，在注入后就需要添加自己的积木。添加积木的过程分为三步：首先定义积木外观，再完成代码生成器，最后将积木置于 `ToolBox` 中。
-
-### Work Space 的结构
-
-![WorkSpace](.gitbook/assets/5-1.png)
-
-以上是一个完整的 `WorkSpace` 。左侧包含了 逻辑、循环 等积木类别的竖栏称为 `ToolBox` 。点击 `ToolBox` 之后在右侧显示的，供用户选取积木的部分称为 `FlyOut` 。右侧搭建积木的空白区域和左侧 `ToolBox` 、`FlyOut` 共同组成 `WorkSpace` 。
-
-`ToolBox` 划分为多个 `Category` 。逻辑、循环等是 `Google Blockly` 自带的原生 `Category` 。变量、函数是较为特殊的 `Category` ，因为它们包含的积木是可变的（添加多个变量或函数后，`Category` 的内容发生改变）。在“颜色”和“变量”之间有一道空隙将二者隔开，称之为 `Separator` 。
-
-### 积木外观开发方法
-
-`Blockly Developer Tools` 不仅能用来生成注入 `WorkSpace` 时的配置项，还提供了开发积木外观的方法，并预设好了 `Code Generator` 代码的框架。
+`WorkSpace` 注入后应当添加积木。按顺序先定义积木外观，再完成代码生成器，最后将积木置于 `ToolBox` 中。`Blockly Developer Tools` 提供较直观地开发积木的方法。
 
 官方教程：[https://developers.google.com/blockly/guides/create-custom-blocks/define-blocks](https://developers.google.com/blockly/guides/create-custom-blocks/define-blocks)
 
 `Developer Tools` ：[https://developers.google.com/blockly/guides/create-custom-blocks/blockly-developer-tools](https://developers.google.com/blockly/guides/create-custom-blocks/blockly-developer-tools)
 
-你可以在 `Block Factory` 中自由搭建积木外观，通过搭积木的方式你可以轻松搞定基础积木开发语法。
+足下可以在 `Block Factory` 中自由搭建积木外观，认识一些基础语法。
+
+## 积木类型
 
 ![Stmt](.gitbook/assets/5-2.png)![Stmt](.gitbook/assets/5-3.png)
 
-上方的方块被称为 `Reporter Block` ，特点是输出一个返回值。这一说法出自 `MicroSoft PXT` 文档。`Blockly` 本身并没有这一名词，一般直接称该积木拥有 `Output` 。
+上方的方块被称为 `Reporter Block` ，特点是输出一个返回值。这一说法出自 `MicroSoft PXT` 文档。`Blockly` 并不使用这一名词，一般直接称该积木拥有 `Output` 。返回值可以有类型也可以不指定。原生类型包括布尔值、数字、字符串、列表。可以传入一个字符串以自定义类型。类型既可以是字符串也能是字符串列表。具体的类型判断将在左文细述。
 
 ![Reporter](.gitbook/assets/5-4.png)![Reporter](.gitbook/assets/5-5.png)
 
@@ -44,11 +34,11 @@ description: 积木外观开发上 第五
 
 连接形式，如为 `Reporter`，请使用 `left output` 。
 
-如为 `Statement` 请使用 `top bottom connection` ，这样积木上下两侧都可以连接其他积木。
+如为 `Statement` 请使用 `top bottom connection` ，这样积木上下两侧都可以连接其他积木。上方第一个积木是 `top bottom connection` 的示例。
 
-如果你想写的是“终止循环”或者“返回值”这类积木，那么积木下方不需要连接其他积木，也就不需要底部的 连接。（直接跳出循环，那么这块积木底下的代码当然没有任何意义了，返回意味着函数的这个逻辑分支到终点了，因此直接拒绝在下方连接任何积木）
+如果需要编写“终止循环”或者“返回 ( `return` )”这类积木，那么积木下方不需要连接其他积木，也就不需要底部的 连接。（直接跳出循环，那么这块积木底下的代码无意义。返回代表函数的逻辑分支到终点，也直接拒绝在下方连接任何积木。示例在右上。）
 
-其实上下方连接都可以指定连接类型，不过默认不使用。
+上下方连接都可以指定连接类型，所有原生积木都默认不指定。
 
 ![ToolTip](.gitbook/assets/5-12.png)
 
@@ -60,7 +50,7 @@ description: 积木外观开发上 第五
 
 `colour` 规定积木颜色。左文将会再次提及颜色的修改。
 
-之后，你可以从左侧 `input` 处选取输入。
+## 输入
 
 ![InputValue](.gitbook/assets/5-14.png)
 
@@ -70,7 +60,7 @@ description: 积木外观开发上 第五
 
 上面展示的就是三种 `Input` 形式。
 
-其中 `Value Input` 为接受指定类型 `Reporter` 积木的输入。类型可以留空，可以是一种，也可以是一个列表。默认的连接处理方式是：`output` 和 `input` 任意一项为空则允许连接，如果二者均非空，则判断是否有重合，如有则允许连接。当然，连接处理是可以通过插件进行自定义的。见左文。
+其中 `Value Input` 为接受指定类型 `Reporter` 积木的输入。类型可以留空，可以是一种，也可以是一个列表。默认的连接处理方式是：`output` 和 `input` 任意一项为空则允许连接，如果二者均非空，则判断是否有重合，如有则允许连接。当然，连接处理可以通过插件自定义。见左文。
 
 `Statement Input` 为接受任意 `Statement` 的一种输入。
 
@@ -90,7 +80,7 @@ description: 积木外观开发上 第五
 
 导出积木时：
 
-第一步，切换到 `Block Exporter` 。（别忘了先按 `Save` 保存现有积木）
+第一步，切换到 `Block Exporter` 。（先按 `Save` 保存现有积木）
 
 第二步，把 `Block Definitions` 和 `Generator` 全部切换为 `JavaScript` 。
 

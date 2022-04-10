@@ -8,17 +8,27 @@ description: 注入 第三
 
 注入的代码一般而言形如：
 
-```
+```javascript
 const workspace = Blockly.inject(location, options);
 ```
 
 其中返回的 `WorkSpace` 对象，就是可视化编辑器的对象。
 
-猜测足下对于 `WorkSpace` 的刻板印象，可能是左边一排“货架”，摆满了积木。取之无禁用之不竭。右侧是一片用来搭积木的场地，把左侧的积木拖到右侧就可以编写代码。这个“货架”被称为 `ToolBox`。
+猜测足下对于 `WorkSpace` 的刻板印象，可能是一个较大的方框。左边一排“货架”上摆满了取之无禁用之不竭的积木。右侧有一片用来搭积木的场地，把“货架”上的积木拖到右侧就可以编写代码。再专业些，这个大方框可以被称为 `WorkSpace` ，而这个“货架”可以被称为 `ToolBox`。似乎这是可视化编辑器最基础的结构。
 
-但是 `WorkSpace` 不仅仅是这样的。`ToolBox` 可以不存在。这样就形成了一个展示区域。`Toolbox` 可以显示在右边，以方便从右至左书写的语言。甚至可以显示在上方。同一个页面内可以有多个 `WorkSpace` 。推荐使用 `WorkSpace` 来给积木写文档。每一个积木都使用 `WorkSpace` 展示，而不是截图展示。
+![WorkSpace](.gitbook/assets/3-1.png)
 
-```
+以上是一个完整的 `WorkSpace` 。左侧包含了 逻辑、循环 等积木类别的竖栏即为 `ToolBox` 。点击 `ToolBox` 之后在右侧显示的，供用户选取积木的部分称为 `FlyOut` 。右侧搭建积木的空白区域和左侧 `ToolBox` 、`FlyOut` 共同组成 `WorkSpace` 。
+
+`ToolBox` 划分为多个 `Category` 。逻辑、循环等是 `Google Blockly` 自带的原生 `Category` 。变量、函数是较为特殊的 `Category` ，因为它们包含的积木是可变的（添加多个变量或函数后，`Category` 的内容发生改变）。在“颜色”和“变量”之间有一道空隙将二者隔开，称之为 `Separator` 。
+
+然而基础结构也可以有很多变化。 `ToolBox` 可以不存在。如果在 `WorkSpace` 内加上一些积木，就形成了一个展示区域。`Toolbox` 可以显示在右边，以方便从一些右至左书写的语言。同一个页面内可以把一个 `WorkSpace` 作为编辑器的主体，也可以有任意多个 `WorkSpace` 。通过多个 `WorkSpace` 的恰当组合，可以实现编程教学的效果。考虑一篇编程开发的教学文章，总是有代码示例，那么采用 `Blockly` 进行教学，又怎会不涉及多个 `WorkSpace` 呢？
+
+本文主要介绍的编写方式，或许更符合刻板印象。但掌握了编辑器的编写方式，亦能写出一个展示区域。
+
+## 注入
+
+```javascript
 const options = {
     toolbox: document.getElementById('toolbox'),
     media: 'media/'    
@@ -26,11 +36,40 @@ const options = {
 const workspace = Blockly.inject('blocklyDiv', options);
 ```
 
-这就是注入的一个简单实例。配置项有很多，将在下方一一翻译。最简单的方式（即本教程示例项目采用的方式）是在 `HTML` 页面中写一个 `<xml>` 标签作为 `ToolBox` ，再把 `Blockly` 注入到一个 `<div>` 当中。`ToolBox` 的编写将会在左文提及。此处提供一个简单的 `ToolBox` 供测试使用。
+此即注入的一个简单实例。配置项有很多，将在下方一一翻译。最简单的方式（即示例项目采用的方式）是在 `HTML` 页面中写一个 `<xml>` 标签作为 `ToolBox` ，再把 `Blockly` 注入到一个 `<div>` 当中。`ToolBox` 的编写将会在左文提及。此处提供一个简单的 `ToolBox` 供测试使用。所使用的积木全为官方自带的原生积木。
 
+```xml
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <block type="controls_ifelse">
+    </block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="controls_repeat_ext">
+        <value name="TIMES">
+            <shadow type="math_number">
+                <field name="NUM">10</field>
+            </shadow>
+        </value>
+    </block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+    <block type="logic_null" disabled="true"></block>
+    <block type="logic_ternary"></block>
+    <block type="text_charAt">
+        <value name="VALUE">
+            <block type="variables_get">
+                <field name="VAR">text</field>
+            </block>
+        </value>
+    </block>
+</xml>
 ```
-<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none>    <block type="controls_ifelse"></block>    <block type="logic_compare"></block>    <block type="logic_operation"></block>    <block type="controls_repeat_ext">        <value name="TIMES">            <shadow type="math_number">                <field name="NUM">10</field>            </shadow>        </value>    </block>    <block type="logic_operation"></block>    <block type="logic_negate"></block>    <block type="logic_boolean"></block>    <block type="logic_null" disabled="true"></block>    <block type="logic_ternary"></block>    <block type="text_charAt">        <value name="VALUE">            <block type="variables_get">                <field name="VAR">text</field>            </block>        </value>    </block></xml>
-```
+![Example ToolBox](.gitbook/assets/3-2.png)
+
+## 配置项翻译
+
+右文注入时只使用到 `toolbox`  和 `media` 这两个配置项。其他配置项翻译如下：
 
 | 配置项名                  | 类型                        | 简介                                                                                                                             |
 | --------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |

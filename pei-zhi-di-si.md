@@ -4,11 +4,11 @@ description: 配置 第四
 
 # 配置 第四
 
-右文提及一些配置项，此处详细展开。如无特殊需求可以直接跳转文末查看 `Blockly Developer Tools` 的使用方法，将会简单很多。
+右文提及一些配置项，此处详细展开。如无特殊需求可直接查看 `Blockly Developer Tools` 的使用方法，将会降低难度。
 
 ### 网格
 
-```
+```javascript
 grid: {
     spacing: 20,
     length: 3,
@@ -21,7 +21,7 @@ grid: {
 
 ### 拖拽
 
-```
+```javascript
 move: {
     scrollbars:{
         horizontal: true,
@@ -42,7 +42,7 @@ move: {
 
 ### 缩放
 
-```
+```javascript
  zoom: {
     controls: true,
     wheel: true,
@@ -58,12 +58,12 @@ move: {
 
 ### `Blockly Developer Tools` 生成配置
 
-首先打开 `Blockly Developer Tools`，之后按图示方法操作：
+首先打开 `Blockly Developer Tools`，之后按图示顺序操作，点击 `Workspace Factory` 和 `Workspace`：
 
 ![Blockly Developer Tools](.gitbook/assets/4-1.png)
 
-中间一列可供勾选的选项，就是右文翻译的那些配置项。只要点击启用禁用，调整网格、拖拽等配置项的参数，就可以即时地在右侧的预览中看到效果。根本不需要完全在字面上理解配置项的含义。
+中间一列即为右文已翻译的配置项。只需点击启用，调整网格等一干配置项的参数，便能即时地在右侧的预览中看到效果。
 
 ![Export](.gitbook/assets/4-2.png)
 
-此后单击 `Export`，单击 `Starter Code`，就导出了 `WorkSpace` 的配置项。可以看到，在这个文件中，配置项已经生成好了。
+此后单击 `Export`，再单击 `Starter Code`，就导出了 `WorkSpace` 的配置项。
