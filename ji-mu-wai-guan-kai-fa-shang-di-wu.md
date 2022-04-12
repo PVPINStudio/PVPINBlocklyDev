@@ -22,9 +22,9 @@ description: 积木外观开发上 第五
 
 上方的方块被称为 `Statement Block` ，特点是没有返回值，可以看作是 `void` 函数，没有输出。
 
-![inline](.gitbook/assets/5-6.png?lastModify=1649341862)![inline](.gitbook/assets/5-7.png)
+![External](.gitbook/assets/5-6.png)![External](.gitbook/assets/5-7.png)
 
-![External](.gitbook/assets/5-8.png)![External](.gitbook/assets/5-9.png)
+![Inline](.gitbook/assets/5-8.png)![Inline](.gitbook/assets/5-9.png)
 
 `Inputs` 规定输入是内联还是外联，单行尽可能内联，多行可以外联。
 
