@@ -101,5 +101,3 @@ domToMutation: function(xmlElement) {
 此处有个技巧：`domToMutation` 函数中可以直接调用 `setFieldValue` 方法，强制更新积木对象中的属性。这样在 `updateShape_` 方法中就可以直接通过 `this` 访问各种 `Field` 的值而不用担心获取不到。
 
 尽可能通过 `mutator` 把多个积木拼合起来。如设置对象的 `X` 坐标，和获取对象的 `X` 坐标，可以做在同一个积木里。见左文进阶。
-
-\\

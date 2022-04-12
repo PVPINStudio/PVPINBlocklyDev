@@ -96,5 +96,3 @@ const workspace = Blockly.inject('blocklyDiv', options);
 | `maxTrashcanContents` | `number`                  | 回收站内最大积木数量。设为 0 则停用回收站，默认 32。                                                                                                  |
 | `plugins`             | `object`                  | 配置插件。见左文。                                                                                                                      |
 | `zoom`                | `object`                  | 配置缩放功能。见左文。                                                                                                                    |
-
-\\
