@@ -80,6 +80,37 @@ const pluginInfo = {
 
 通过恰当连接检查可以模拟如 `Java` 多态这样的语法。这样做需要首先在 `Java` 环境内运行一段程序，把需要的类的所有超类类名进行适当的储存。再在运行时恰当读取。
 
+在 `doChecks_` 内添加：
+
+```javascript
+        for (let i = 0; i < checkArrayOne.length; i++) {
+            for (let j = 0; j < checkArrayTwo.length; j++) {
+                if (!MAP[checkArrayOne[i]]) {
+                    return false;
+                }
+                if (MAP[checkArrayOne[i]].indexOf(checkArrayTwo[j]) > -1) {
+                    return true;
+                }
+            }
+        }
+```
+
+再生成依赖的集合，如：
+
+```javascript
+const MAP = {
+    "java.lang.String": [
+        "java.lang.CharSequence",
+        // ......
+    ],
+    // ......
+}
+```
+
+那么能连接 `CharSequence` 处都可以连接 `String` 了，使得设计积木时可以更好地按照  `Java` 多态原先的面貌设计。
+
+完整代码见 BBS 回复可见内内容。
+
 ## 可用的接口
 
 [官方教程](https://developers.google.cn/blockly/guides/plugins/using_blockly_apis) 已经阐明只有七个接口可供实现。它们各有注册名，如 `connectionChecker`，也有类名，如 `IConnectionChecker`。其他功能没有接口。
